@@ -93,7 +93,7 @@ impl Blockchain {
     pub fn load(root_dir: PathBuf, name: BlockchainName) -> Self {
         let dir = config::directory(root_dir, &name);
         let storage_config = StorageConfig::new(&dir);
-        let storage = Storage::init(&storage_config).unwrap();
+        let storage = Storage::load(&storage_config).unwrap();
 
         let file = storage_config.get_config_file();
         let config = Config::from_file(file).unwrap();
